@@ -11,6 +11,12 @@ describe('Thermostat', () => {
     });
   });
 
+  describe('#powerSavingMode', () => {
+    it('initialises with power saving mode on', () => {
+      expect(thermostat.powerSavingMode()).toEqual(true);
+    });
+  });
+
   describe('#up', () => {
     it('increases the temperature', () => {
       const defaultTemperature = thermostat.temperature();
