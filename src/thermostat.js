@@ -6,4 +6,8 @@ class Thermostat {
   temperature() {
     return this._temperature;
   };
+
+  up(increase) {
+    this._temperature += increase
+  };
 };
