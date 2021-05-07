@@ -69,4 +69,13 @@ describe('Thermostat', () => {
       expect(thermostat.temperature()).toEqual(10);
     }); 
   });
+
+  describe('#resetTemperature', () => {
+    it('resets the temperature to 20', () => {
+      const decrease = 8;
+      thermostat.down(decrease);
+      thermostat.resetTemperature()
+      expect(thermostat.temperature()).toEqual(20);
+    });
+  });
 });

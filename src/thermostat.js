@@ -1,10 +1,11 @@
 class Thermostat {
   constructor() {
-   this._temperature = 20;
-   this._minTemperature = 10;
-   this._maxTemperature = 32;
-   this._powerSavingMode = true;
-   this._maxTemperaturePowerSavingMode = 25;
+    this._defaultTemperature = 20;
+    this._temperature = this._defaultTemperature;
+    this._minTemperature = 10;
+    this._maxTemperature = 32;
+    this._powerSavingMode = true;
+    this._maxTemperaturePowerSavingMode = 25;
   };
 
   temperature() {
@@ -32,6 +33,10 @@ class Thermostat {
     if(this._temperature < this._minTemperature) {
       this._temperature = this._minTemperature;
     };
+  };
+
+  resetTemperature() {
+    this._temperature = this._defaultTemperature;
   };
 
   _maximumTemperature() {
