@@ -17,6 +17,19 @@ describe('Thermostat', () => {
     });
   });
 
+  describe('#togglePowerSavingMode', () => {
+    it('turns power saving mode off', () => {
+      thermostat.togglePowerSavingMode()
+      expect(thermostat.powerSavingMode()).toEqual(false);
+    });
+
+    it('turns power saving mode back on', () => {
+      thermostat.togglePowerSavingMode()
+      thermostat.togglePowerSavingMode()
+      expect(thermostat.powerSavingMode()).toEqual(true);
+    });
+  });
+
   describe('#up', () => {
     it('increases the temperature', () => {
       const defaultTemperature = thermostat.temperature();

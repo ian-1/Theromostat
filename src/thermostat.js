@@ -10,7 +10,11 @@ class Thermostat {
   };
 
   powerSavingMode() {
-    return this._powerSavingMode
+    return this._powerSavingMode;
+  };
+
+  togglePowerSavingMode() {
+    this._powerSavingMode = !this._powerSavingMode;
   };
 
   up(increase) {
