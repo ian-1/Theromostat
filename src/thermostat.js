@@ -2,7 +2,8 @@ class Thermostat {
   constructor() {
    this._temperature = 20;
    this._minimumTemperature = 10;
-   this._powerSavingMode = true
+   this._powerSavingMode = true;
+   this._maximumTemperaturePowerSavingMode = 25;
   };
 
   temperature() {
@@ -19,6 +20,10 @@ class Thermostat {
 
   up(increase) {
     this._temperature += increase
+    const maxTemperature = this._maximumTemperaturePowerSavingMode;
+    if(this._temperature > maxTemperature) {
+      this._temperature = maxTemperature;
+    };
   };
 
   down(decrease) {

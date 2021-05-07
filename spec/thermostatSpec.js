@@ -37,6 +37,13 @@ describe('Thermostat', () => {
       thermostat.up(increase);
       expect(thermostat.temperature()).toEqual(defaultTemperature + increase);
     });
+
+    it('wont increase the temperature beyond 25 when power save mode is on', () => {
+      const defaultTemperature = thermostat.temperature();
+      const increase = 25 - defaultTemperature + 1;
+      thermostat.up(increase);
+      expect(thermostat.temperature()).toEqual(25);
+    });
   });
 
   describe('#down', () => {
