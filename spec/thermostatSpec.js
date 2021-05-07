@@ -27,5 +27,12 @@ describe('Thermostat', () => {
       thermostat.down(decrease);
       expect(thermostat.temperature()).toEqual(defaultTemperature - decrease);
     });
+
+    it('wont decrease the temperature below 10 degrees', () => {
+      const defaultTemperature = thermostat.temperature();
+      const decrease = defaultTemperature - 9;
+      thermostat.down(decrease);
+      expect(thermostat.temperature()).toEqual(10);
+    }); 
   });
 });
