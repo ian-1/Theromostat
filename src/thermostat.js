@@ -10,4 +10,8 @@ class Thermostat {
   up(increase) {
     this._temperature += increase
   };
+
+  down(decrease) {
+    this._temperature -= decrease
+  };
 };

@@ -19,4 +19,13 @@ describe('Thermostat', () => {
       expect(thermostat.temperature()).toEqual(defaultTemperature + increase);
     });
   });
+
+  describe('#down', () => {
+    it('decreases the temperature', () => {
+      const defaultTemperature = thermostat.temperature();
+      const decrease = 2;
+      thermostat.down(decrease);
+      expect(thermostat.temperature()).toEqual(defaultTemperature - decrease);
+    });
+  });
 });
