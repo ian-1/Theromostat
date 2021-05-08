@@ -64,7 +64,7 @@ describe('Thermostat', () => {
 
     it('wont decrease the temperature below 10 degrees', () => {
       const defaultTemperature = thermostat.temperature();
-      const decrease = defaultTemperature - 9;
+      const decrease = defaultTemperature - 10 + 1;
       thermostat.down(decrease);
       expect(thermostat.temperature()).toEqual(10);
     }); 
@@ -76,6 +76,29 @@ describe('Thermostat', () => {
       thermostat.down(decrease);
       thermostat.resetTemperature()
       expect(thermostat.temperature()).toEqual(20);
+    });
+  });
+
+  describe('#currentEnergyUsage', () => {
+    it('returns low usage where temperature below 18', () => {
+      const defaultTemperature = thermostat.temperature();
+      const decrease = defaultTemperature - 18 + 1;
+      thermostat.down(decrease);
+      expect(thermostat.currentEnergyUsage()).toEqual('low-usage');
+    });
+
+    it('returns high usage where temperature above or equal to 25', () => {
+      const defaultTemperature = thermostat.temperature();
+      const increase = 25 - defaultTemperature;
+      thermostat.up(increase);
+      expect(thermostat.currentEnergyUsage()).toEqual('high-usage');
+    });
+
+    it('returns medium usage where temperature is in between', () => {
+      const defaultTemperature = thermostat.temperature();
+      const increase = 20 - defaultTemperature;
+      thermostat.up(increase);
+      expect(thermostat.currentEnergyUsage()).toEqual('medium-usage');
     });
   });
 });
