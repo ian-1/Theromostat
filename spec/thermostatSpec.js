@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Thermostat', () => {
   let thermostat;
 
@@ -31,11 +33,17 @@ describe('Thermostat', () => {
   });
 
   describe('#up', () => {
-    it('increases the temperature', () => {
+    it('increases the temperature by amount stated', () => {
       const defaultTemperature = thermostat.temperature();
       const increase = 3;
       thermostat.up(increase);
       expect(thermostat.temperature()).toEqual(defaultTemperature + increase);
+    });
+    
+    it('increases the temperature 1 if no amount stated', () => {
+      const defaultTemperature = thermostat.temperature();
+      thermostat.up();
+      expect(thermostat.temperature()).toEqual(defaultTemperature + 1);
     });
 
     it('wont increase the temperature beyond 25 when power save mode is on', () => {
@@ -55,11 +63,17 @@ describe('Thermostat', () => {
   });
 
   describe('#down', () => {
-    it('decreases the temperature', () => {
+    it('decreases the temperature by amount requested', () => {
       const defaultTemperature = thermostat.temperature();
       const decrease = 2;
       thermostat.down(decrease);
       expect(thermostat.temperature()).toEqual(defaultTemperature - decrease);
+    });
+
+    it('decreases the temperature by 1 if no amount stated', () => {
+      const defaultTemperature = thermostat.temperature();
+      thermostat.down();
+      expect(thermostat.temperature()).toEqual(defaultTemperature - 1);
     });
 
     it('wont decrease the temperature below 10 degrees', () => {
